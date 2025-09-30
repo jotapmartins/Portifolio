@@ -11,13 +11,11 @@ jobs:
     runs-on: windows-latest
     permissions:
       contents: read
+      id-token: write  # ← ESSENCIAL para login com OIDC
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: List files (for debugging)
-        run: dir
 
       - name: Login to Azure
         uses: azure/login@v2
