@@ -1,0 +1,32 @@
+name: Deploy Static Site to Azure Web App - joaopedromartins
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+      id-token: write  # ← ESSENCIAL para login com OIDC
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_35D21992710145F795A789B072058139 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_41932235913C443B8BDD0823FCD38A89 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_381A78E42FD54526B0D20F94E29957DD }}
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'joaopedromartins'
+          slot-name: 'Production'
+          package: .
