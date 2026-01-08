@@ -1,0 +1,49 @@
+name: Build and deploy Node.js app to Azure Web App - atelieamornospontos
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # ← MUDOU para ubuntu
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare static files
+        run: |
+          echo "Preparing static HTML/CSS/JS files"
+          # Cria package.json mínimo se não existir
+          if [ ! -f package.json ]; then
+            echo '{"name":"portfolio-static","version":"1.0.0"}' > package.json
+          fi
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-app
+          path: .
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: node-app
+      
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
+        with:
+          app-name: 'atelieamornospontos'
+          slot-name: 'Production'
+          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_768B461BC8AB4A3FBD38E7A34C1F0E95 }}
