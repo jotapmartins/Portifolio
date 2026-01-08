@@ -8,17 +8,12 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest  # ← MUDOU para ubuntu
     permissions:
       contents: read
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
 
       - name: Prepare static files
         run: |
