@@ -1,87 +1,75 @@
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  font-family: "Segoe UI", Roboto, Arial, sans-serif; /* Fonte padrão */
-  background: #1e3c72;
-  color: #f5f5f5; /* Cor padrão do texto */
-  line-height: 1.6; /* Espaçamento entre linhas */
-  padding: 0; /* Sem espaçamento extra */
+    background-color: #f7f8fa;
+    color: #333;
 }
 
-h1 {
-  text-align: center; /* Centraliza o título */
-  margin-top: 40px; /* Espaço acima */
-  color: #fff; /* Cor branca */
+/* Header */
+.header {
+    background: linear-gradient(135deg, #9fd0ff, #b7ddff);
+    text-align: center;
+    padding: 40px 20px;
 }
 
-main {
-  max-width: 900px; /* Largura máxima */
-  margin: 0 auto; /* Centraliza na tela */
-  padding: 20px; /* Espaçamento interno */
+.header h1 {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 500;
 }
 
-section {
-  background: rgba(255, 255, 255, 0.1); /* Fundo branco transparente */
-  padding: 20px; /* Espaçamento interno */
-  margin-bottom: 20px; /* Espaço entre seções */
-  border-radius: 12px; /* Cantos arredondados */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra */
-  transition: transform 0.7s, box-shadow 0.7s; /* Animação suave */
+.header p {
+    color: #f2f7ff;
+    margin-top: 8px;
+    font-size: 15px;
 }
 
-section:hover {
-  transform: translateY(-7px); /* Levanta ao passar o mouse */
+/* Portfolio */
+.portfolio {
+    max-width: 700px;      /* opcional: deixa mais elegante */
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-h2 {
-  color: #ffcc00; /* Amarelo */
-  margin-bottom: 10px; /* Espaço abaixo */
-  border-left: 5px solid #ffcc00; /* Linha amarela ao lado */
-  padding-left: 10px; /* Espaço entre linha e texto */
+/* Produto */
+.produto {
+    background-color: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-ul {
-  list-style: none; /* Remove os marcadores padrão */
-  padding-left: 10px; /* Espaço à esquerda */
+.produto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
 }
 
-ul li {
-  margin: 5px; /* Espaço entre itens */
+.produto img {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
 }
 
-footer {
-  text-align: center; /* Centraliza texto */
-  padding: 15px; /* Espaço interno */
-  color: #fff; /* Texto branco */
-  font-size: 0.8rem; /* Tamanho menor */
+.info {
+    padding: 18px;
 }
 
-.menu {
-  display: flex; /* Coloca os links lado a lado */
-  justify-content: center; /* Centraliza no meio */
-  gap: 20px; /* Espaço entre os links */
-  margin-bottom: 30px; /* Espaço abaixo do menu */
+.info h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
 }
 
-.menu a {
-  text-decoration: none; /* Remove o sublinhado */
-  color: #ffcc00; /* Amarelo do tema */
-  font-weight: bold; /* Deixa em negrito */
-  font-size: 1; /* Aumenta o tamanho */
-  margin-top: 30px;
-  padding: 6px 12px; /* Espaço interno */
-  border-radius: 6px; /* Cantos arredondados */
-  transition: background 0.3s, color 0.3s; /* Animação suave */
-}
-
-.menu a:hover {
-  background: #ffcc00; /* Fundo amarelo no hover */
-  color: #222; /* Texto preto no hover */
-}
-
-html {
-  scroll-behavior: smooth;
+.info p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
 }
